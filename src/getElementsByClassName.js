@@ -7,4 +7,25 @@
 var getElementsByClassName = function(className
 ) {
   // your code here
+  var results = [];
+
+  var search = function(node) {
+  	if (typeof node.classList !== 'undefined') {
+  		if (node.classList.contains(className)) {
+  			results.push(node);
+  		}
+  	}
+
+  	if (document.body.hasChildNodes()) {
+  		for (var element in node.childNodes) {
+  			search(node.childNodes[element]);
+  		}
+  	}
+  };
+
+  search(document.body);
+  return results;
+
 };
+
+
